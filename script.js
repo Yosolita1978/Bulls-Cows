@@ -52,7 +52,7 @@ console.log(secretNumbers.join(""));
 // Function to enforce 4-digit limit
 function enforceDigitLimit(event) {
     const input = event.target;
-    if (input.value.length >= 4 && event.keyCode !== 8 && event.keyCode !== 46) {
+    if (input.value.length >= 4 && event.keyCode !== 8 && event.keyCode !== 46 && event.keyCode !== 13) {
         event.preventDefault();
     }
 }
@@ -101,13 +101,25 @@ document.getElementById('guess-form').addEventListener('submit', function (e) {
             let cows = checkCows(secretNumbersString, guess);
             message.className = "error";
             message.textContent = `You have ${bulls} bulls and ${cows} cows and you have ${10 - turns} attempts left`;
-            const container = document.getElementById('number-container');
+
+            // Create a new row for this guess
+            const guessRow = document.getElementById('game-container');
+            //const guessRow = document.createElement('div');
+            guessRow.className = 'container';
+
+            // Add the guess boxes to the row
             guessArr.forEach(number => {
                 const numberBox = document.createElement('div');
                 numberBox.className = 'number-box';
                 numberBox.textContent = number;
-                container.appendChild(numberBox);
+                guessRow.appendChild(numberBox);
             });
+
+            // Add the feedback to the row
+            const feedback = document.createElement('div');
+            feedback.className = 'feedback';
+            feedback.textContent = `Bulls: ${bulls}, Cows: ${cows}`;
+            guessRow.appendChild(feedback);
         }
     }
 
