@@ -11,7 +11,6 @@ for (let i = 0; i < 4; i++) {
 }
 
 const container = document.getElementById('number-container');
-
 secretNumbers.forEach(number => {
     const numberBox = document.createElement('div');
     numberBox.className = 'number-box';
@@ -19,8 +18,36 @@ secretNumbers.forEach(number => {
     container.appendChild(numberBox);
 })
 
-//check userInput and 
+// Helper function to check how many bulls and in what positions
+function checkBulls(secretNumber, userInput){
+    let bulls = 0;
+    for(let i = 0; i < secretNumber.length; i++){
+        if(secretNumber[i] === userInput[i]){
+            bulls += 1;
+        }
+    }
+    return bulls;
+}
 
+// Helper function to check how many cows there is in the user input
+
+function checkCows(secretNumber, userInput) {
+    let cows = 0;
+    let secretNumberArr = Array.from(secretNumber)
+    for (let i = 0; i < userInput.length; i++) {
+      let index = secretNumberArr.indexOf(userInput[i]);
+      if (index > -1) {
+        if(index !== i){
+          cows += 1;
+        } 
+        secretNumberArr.splice(index, 1, -1);
+            }
+    }
+    return cows
+  }
+
+
+//check userInput and guess
 document.getElementById('guess-form').addEventListener('submit', function(e) {
     e.preventDefault();
     guess = document.getElementById('guess-input').value;
@@ -30,7 +57,9 @@ document.getElementById('guess-form').addEventListener('submit', function(e) {
         message.textContent = "You win!";
         message.className = "success";
     } else {
-        message.textContent = "Try again!";
         message.className = "error";
+        let bulls = checkBulls(secretNumbersString, guess);
+        let cows = checkCows(secretNumbersString, guess);
+        message.textContent = `You have ${bulls} bulls and ${cows} cows`;
     }
 });
