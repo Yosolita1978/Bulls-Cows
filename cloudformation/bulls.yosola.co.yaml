@@ -1,0 +1,11 @@
+AWSTemplateFormatVersion: 2010-09-09
+Resources:
+  StaticSite:
+    Type: AWS::CloudFormation::Stack
+    Properties:
+      TemplateURL: "static-site.yaml"
+      Parameters:
+        DomainName: bulls.yosola.co
+        SubDomain: ""
+        SSLCertificateArn: "arn:aws:acm:us-east-1:361675677202:certificate/4b37eacb-62b6-4a65-95ad-97000ebabc75"
+        HostedZoneId: Z08039751M6A8T6LY3QHQ
