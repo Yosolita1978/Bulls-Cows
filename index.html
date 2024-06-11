@@ -9,8 +9,10 @@
 </head>
 
 <body>
-    <div>
-        <h3>Welcome to our Bulls & Cows Game</h3>
+    <div class="title">
+        <h3>Welcome to my JS Game
+            <span>Bulls & Cows</span>
+        </h3>
         <div class="container" id="number-container">
             <!-- Secret number boxes will be appended here -->
         </div>
@@ -24,6 +26,25 @@
                 <button type="submit">Enter</button>
             </form>
         </div>
+
+
+        <div class="card">
+            <div class="content">
+                <div class="instructions-front">
+                    How to play?
+                </div>
+                <div class="instructions-back">
+                    <ol>
+                        <li>Enter a 4-digit number in the input box.</li>
+                        <li>Click "Submit" to guess the secret number.</li>
+                        <li>You'll get feedback: "bulls" for correct digits in the right place and "cows" for correct digits in the wrong place.</li>
+                        <li>You have 10 attempts to guess the number.</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+
+
     </div>
     <script src="script.js"></script>
 </body>
