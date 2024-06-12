@@ -1,7 +1,8 @@
 body {
     font-family: Arial, sans-serif;
-    background-color: #f0f0f0;
+    background-color: #c2c2c2;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     height: 100vh;
@@ -266,6 +267,7 @@ h3 span {
 ol {
     text-align: left;
     padding-left: 20px;
+    margin: 10px 0;
 }
 
 ol li {
@@ -324,7 +326,7 @@ ol li {
         display: grid;
         justify-content: center; 
         grid-template-columns: repeat(6, 50px);
-        margin: 1em 1em 1em 0;
+        margin: 25px;
     }
 
     .number-box,
@@ -341,7 +343,8 @@ ol li {
     }
 
     .card{
-        padding: 1.5em;
+        display: grid;
+        justify-content: center;
     }
 
     .form-container {
